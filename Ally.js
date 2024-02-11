@@ -2,13 +2,14 @@ class Ally {
     constructor(tier) {
         this.x = random(width);
         this.y = random(height);
-        this.lifetime = tier * 10 + 10; // e.g., T1: 20 seconds
+        this.lifetime = tier * 10 + 10; // T1: 20 seconds
         this.tier = tier;
+        this.image = allyImages[tier];
     }
 
     display() {
         // Placeholder for ally display
-        ellipse(this.x, this.y, 20 + this.tier * 5, 20 + this.tier * 5);
+        image(this.image, this.x, this.y, imageWidth, imageHeight);
     }
 
     update() {

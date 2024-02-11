@@ -4,6 +4,7 @@ class Character {
         this.y = height / 2;
         this.hp = 10;
         this.attack = 1;
+        this.image = mainCharacterImage;
     }
 
     move() {
@@ -14,7 +15,6 @@ class Character {
     }
 
     display() {
-        // Placeholder for character display
-        ellipse(this.x, this.y, 50, 50);
+        image(this.image, this.x, this.y, imageWidth, imageHeight);
     }
 }

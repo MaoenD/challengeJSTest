@@ -1,9 +1,11 @@
 let character;
 let enemies = [];
 let allies = [];
-let enemySpawnRate = 1000; // Time (in milliseconds) between enemy spawns
+let enemySpawnRate = 1000; // Time ms between enemy spawns
 let lastSpawnTime = 0;
 let maxEnemies = 10;
+
+
 
 function setup() {
     createCanvas(800, 600);
@@ -38,13 +40,13 @@ function draw() {
         ally.update();
         ally.display();
         if (ally.lifetime <= 0) {
-            allies.splice(i, 1); // Remove ally if lifetime is over
+            allies.splice(i, 1); // Remove ally if time over
         }
     }
 
-    // Collision detection for attacks and summoning
+    // Collision detection summon
     enemies.forEach((enemy, index) => {
-        if (dist(character.x, character.y, enemy.x, enemy.y) < 50) { // Example attack range
+        if (dist(character.x, character.y, enemy.x, enemy.y) < 50) { // attack range
             enemy.hp -= character.attack; // Character attacks enemy
             if (enemy.hp <= 0) {
                 enemies.splice(index, 1); // Remove enemy if defeated
@@ -60,7 +62,7 @@ function draw() {
     allies.forEach(ally => {
         enemies.forEach((enemy, index) => {
             if (dist(ally.x, ally.y, enemy.x, enemy.y) < 30) { // Ally attack range
-                enemy.hp -= 1; // Simplified ally attack
+                enemy.hp -= 1;
                 if (enemy.hp <= 0) {
                     enemies.splice(index, 1); // Remove enemy if defeated by ally
                 }
@@ -72,7 +74,7 @@ function draw() {
 function keyPressed() {
     if (keyCode === 96) { // Numpad 0 for summoning an ally
         if (enemies.length > 0) {
-            let tier = enemies[0].tier; // Example: summon the first defeated enemy's tier
+            let tier = enemies[0].tier; // summon the first defeated enemy's tier
             allies.push(new Ally(tier));
         }
     }
