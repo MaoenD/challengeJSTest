@@ -4,6 +4,9 @@ let allies = [];
 let enemySpawnRate = 1000; // Time ms between enemy spawns
 let lastSpawnTime = 0;
 let maxEnemies = 10;
+let mainCharacterImg;
+let demonImages = [];
+let allyImages = [];
 
 
 
@@ -69,6 +72,15 @@ function draw() {
             }
         });
     });
+}
+
+function preload() {
+    mainCharacterImg = loadImage('image/MC.png');
+
+    for (let i = 1; i <= 10; i++) {
+        demonImages[i] = loadImage(`image/daemons/demonTier${i}.png`);
+        allyImages[i] = loadImage(`image/daemons/demonTier${i}.png`); // Assuming ally tiers
+    }
 }
 
 function keyPressed() {

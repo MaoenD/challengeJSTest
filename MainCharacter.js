@@ -4,7 +4,7 @@ class Character {
         this.y = height / 2;
         this.hp = 10;
         this.attack = 1;
-        this.image = mainCharacterImage;
+        this.image = mainCharacterImg;
     }
 
     move() {
@@ -15,6 +15,6 @@ class Character {
     }
 
     display() {
-        image(this.image, this.x, this.y, imageWidth, imageHeight);
+        image(this.image, this.x, this.y, 50, 50); // Adjust dimensions as needed
     }
 }

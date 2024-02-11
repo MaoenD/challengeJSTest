@@ -9,7 +9,7 @@ class Enemy {
     }
 
     display() {
-        image(this.image, this.x, this.y, imageWidth, imageHeight);
+        image(this.image, this.x, this.y, 40, 40); // Adjust dimensions as needed
     }
     attackCharacter(character) {
         if (this.attack > 0 && frameCount % 60 === 0) { // Attack once per second
