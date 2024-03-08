@@ -14,7 +14,10 @@ class Ally {
     update() {
         this.lifetime--;
         if (this.lifetime <= 0) {
-            // Remove the ally from the game
+            let index = allies.indexOf(this);
+            if (index > -1) {
+                allies.splice(index, 1); // Remove the ally from the game
+            }
         }
     }
 }

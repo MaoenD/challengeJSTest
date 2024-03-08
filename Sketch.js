@@ -65,7 +65,7 @@ function draw() {
     allies.forEach(ally => {
         enemies.forEach((enemy, index) => {
             if (dist(ally.x, ally.y, enemy.x, enemy.y) < 30) { // Ally attack range
-                enemy.hp -= 1;
+                enemy.hp -= ally.tier; // Assuming ally's tier is its attack power
                 if (enemy.hp <= 0) {
                     enemies.splice(index, 1); // Remove enemy if defeated by ally
                 }
@@ -83,11 +83,3 @@ function preload() {
     }
 }
 
-function keyPressed() {
-    if (keyCode === 96) { // Numpad 0 for summoning an ally
-        if (enemies.length > 0) {
-            let tier = enemies[0].tier; // summon the first defeated enemy's tier
-            allies.push(new Ally(tier));
-        }
-    }
-}
