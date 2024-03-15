@@ -1,7 +1,7 @@
 let character;
 let enemies = [];
 let allies = [];
-let enemySpawnRate = 1500; // Time ms between enemy spawns
+let enemySpawnRate = 1000; // Time ms between enemy spawns
 let lastSpawnTime = 0;
 let maxEnemies = 10;
 let mainCharacterImg;

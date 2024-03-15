@@ -1,7 +1,7 @@
 class Enemy {
     constructor(tier) {
-        this.x = random(width);
-        this.y = random(height);
+        this.x = random(width - 50);
+        this.y = random(height - 100);
         this.hp = tier * 10;
         this.attack = tier - 1;
         this.tier = tier;
