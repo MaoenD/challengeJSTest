@@ -1,3 +1,5 @@
+
+
 class Ally {
     constructor(tier) {
         this.x = random(width);
@@ -20,4 +22,10 @@ class Ally {
             }
         }
     }
+}
+
+function preload() {
+    /*for (let i = 1; i <= 10; i++) {
+        alliesImages[i] = loadImage(`image/enemies/demonTier${i}.png`);
+    }*/
 }

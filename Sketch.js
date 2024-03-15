@@ -1,36 +1,40 @@
 let character;
 let enemies = [];
 let allies = [];
-let enemySpawnRate = 1000; // Time ms between enemy spawns
+let enemySpawnRate = 1500; // Time ms between enemy spawns
 let lastSpawnTime = 0;
 let maxEnemies = 10;
 let mainCharacterImg;
-let demonImages = [];
-let allyImages = [];
-
-
+const enemyImages = [];
+const alliesImages = [];
+let maxHealth = 50;
 
 function setup() {
-    createCanvas(800, 600);
+    createCanvas(windowWidth-20, windowHeight-20);
     character = new Character();
 }
 
 function draw() {
     background(220);
+    text("Ennemies: " + enemies.length, 25, 30);
+    text("Allies: " + allies.length, 25, 50);
+    text("enemySpawnRate: " + enemySpawnRate, 25, 70);
+    text("lastSpawnTime: " + lastSpawnTime, 25, 90);
+    text("Level: " + character.level, 25, 130);
+    text("HP: " + character.hp, 25, 150);
+    text("Attack: " + character.getAttack(), 25, 170);
 
     let currentTime = millis();
     if (enemies.length < maxEnemies && currentTime - lastSpawnTime > enemySpawnRate) {
         enemies.push(new Enemy(Math.ceil(random(1, 10)))); // Random tier between 1 and 10
         lastSpawnTime = currentTime;
     }
-
     character.move();
     character.display();
 
     // Handle enemy logic
     for (let i = enemies.length - 1; i >= 0; i--) {
         let enemy = enemies[i];
-        enemy.update();
         enemy.display();
         if (enemy.hp <= 0) {
             enemies.splice(i, 1); // Remove enemy if defeated
@@ -49,17 +53,25 @@ function draw() {
 
     // Collision detection summon
     enemies.forEach((enemy, index) => {
+        //text("HP: " + enemy.hp, enemy.x, enemy.y + 20);
         if (dist(character.x, character.y, enemy.x, enemy.y) < 50) { // attack range
-            enemy.hp -= character.attack; // Character attacks enemy
+            character.hp -= enemy.attack;
+            enemy.hp -= character.getAttack(); // Character attacks enemy
             if (enemy.hp <= 0) {
                 enemies.splice(index, 1); // Remove enemy if defeated
+                character.hp = maxHealth;
+                character.level++;
+            }
+            if (character.hp <= 0) {
+                character.reset();
+                enemies = []
             }
         }
 
         // Enemy aggro and attack logic
-        if (dist(character.x, character.y, enemy.x, enemy.y) < 100) { // Aggro range
+        /*if (dist(character.x, character.y, enemy.x, enemy.y) < 100) { // Aggro range
             enemy.attackCharacter(character);
-        }
+        }*/
     });
 
     allies.forEach(ally => {
@@ -75,11 +87,11 @@ function draw() {
 }
 
 function preload() {
+    console.log("Preloading Character")
     mainCharacterImg = loadImage('image/MC.png');
-
     for (let i = 1; i <= 10; i++) {
-        demonImages[i] = loadImage(`image/daemons/demonTier${i}.png`);
-        allyImages[i] = loadImage(`image/daemons/demonTier${i}.png`); // Assuming ally tiers
+        enemyImages[i] = loadImage(`image/enemies/demonTier${i}.png`);
+        alliesImages[i] = loadImage(`image/enemies/demonTier${i}.png`);
     }
 }
 
