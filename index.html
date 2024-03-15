@@ -8,12 +8,98 @@
     <script src="Ally.js"></script>
     <script src="Ennemy.js"></script>
     <script src="Sketch.js"></script>
-    <link rel="stylesheet" href="/css/styles.css" />
 </head>
+<style>
+    .container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #main-menu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        border: none;
+    }
+
+    #startButton{
+        height: 60px;
+        width: 120px;
+        border-radius: 35px;
+        background-color: #dc9d3e;
+        border: 3px solid #874f30;
+    }
+
+    #startButton:hover,
+    #startButton:active{
+        background-color: #874f30;
+        color: white;
+    }
+
+    #startButton:active{
+        background-color: #874f30;
+        color: white;
+    }
+
+    h1{
+        color: white;
+    }
+
+
+    
+    @keyframes flame {
+        0% {
+            text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35;
+        }
+        50% {
+            text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35, 0 0 90px #ebbb35, 0 0 100px #ebbb35;
+        }
+        100% {
+            text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35, 0 0 90px #ebbb35, 0 0 100px #ebbb35, 0 0 110px #ebbb35, 0 0 120px #ebbb35;
+        }
+    }
+    
+    .flaming-text {
+        font-size: 60px;
+        color: #1a151c;
+        animation: flame 1.5s infinite alternate;
+    }
+
+    .fullscreen{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-image: url('image/interface.jpeg');
+    }
+
+    .login-buttons {
+        margin-top: 20px;
+    }
+
+    .login-buttons a {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+</style>
 <body>
-    <div id="main-menu">
-        <h1>Welcome to the Game</h1>
-        <button id="startButton" onclick="startGame()">Start Game</button>
+    <div class="container">
+        <img id="ecran" src="image/interface.jpeg" alt="image" class="fullscreen">
+        <div id="main-menu">
+            <h1 class="flaming-text"><strong>Welcome to the game</strong></h1>
+            <button id="startButton" onclick="startGame()">Start Game</button>
+            <div class="login-buttons">
+                <a href="URL_de_connexion_Github">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" width="50" height="50">
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
