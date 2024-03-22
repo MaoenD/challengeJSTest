@@ -8,10 +8,38 @@ class Character {
     }
 
     move() {
-        if (keyIsDown(LEFT_ARROW)) this.x -= 5;
-        if (keyIsDown(RIGHT_ARROW)) this.x += 5;
-        if (keyIsDown(UP_ARROW)) this.y -= 5;
-        if (keyIsDown(DOWN_ARROW)) this.y += 5;
+        if (keyIsDown(LEFT_ARROW)) {
+            for (const entity of enemies) {
+                entity.x += 5;
+            }
+            for (const entity of allies) {
+                entity.x += 5;
+            }
+        }
+        if (keyIsDown(RIGHT_ARROW)) {
+            for (const entity of enemies) {
+                entity.x -= 5;
+            }
+            for (const entity of allies) {
+                entity.x -= 5;
+            }
+        }
+        if (keyIsDown(UP_ARROW)) {
+            for (const entity of enemies) {
+                entity.y += 5;
+            }
+            for (const entity of allies) {
+                entity.y += 5;
+            }
+        }
+        if (keyIsDown(DOWN_ARROW)) {
+            for (const entity of enemies) {
+                entity.y -= 5;
+            }
+            for (const entity of allies) {
+                entity.y -= 5;
+            }
+        }
     }
     getAttack() {
         return 2 * this.level;
