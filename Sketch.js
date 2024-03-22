@@ -12,16 +12,14 @@ let maxHealth = 50;
 let inGame = false;
 
 function setup() {
-    createCanvas(windowWidth-20, windowHeight-20);
+    createCanvas(windowWidth, windowHeight);
     canvas = document.querySelector('canvas');
     canvas.style.display = 'none';
 }
 
 function startGame() {
-    let ecran = document.getElementById("ecran");
-    ecran.style.display = 'none';
-    let mainMenu = document.getElementById("main-menu");
-    mainMenu.style.display = 'none';
+    let mainPage = document.getElementById("main-page");
+    mainPage.style.display = 'none';
     canvas.style.display = 'block';
     character = new Character();
     inGame = true;
