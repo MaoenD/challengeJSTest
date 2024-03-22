@@ -1,33 +1,103 @@
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
+.container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
 }
 
-#mainMenu {
+#main-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+
 }
 
-#mainMenu h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
+#startButton{
+    height: 60px;
+    width: 120px;
+    border-radius: 35px;
+    background-color: #dc9d3e;
+    border: 3px solid #874f30;
 }
 
-#startButton {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #007bff;
-    color: #fff;
+#startButton:hover,
+#startButton:active{
+    background-color: #874f30;
+    color: white;
+}
+
+#startButton:active{
+    background-color: #874f30;
+    color: white;
+}
+
+h1{
+    color: white;;
+}
+
+@keyframes flame {
+    0% {
+        text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35;
+    }
+    50% {
+        text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35, 0 0 90px #ebbb35, 0 0 100px #ebbb35;
+    }
+    100% {
+        text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35, 0 0 90px #ebbb35, 0 0 100px #ebbb35, 0 0 110px #ebbb35, 0 0 120px #ebbb35;
+    }
+}
+
+.flaming-text {
+    font-size: 60px;
+    color: #1a151c;
+    animation: flame 1.5s infinite alternate;
+}
+
+.fullscreen{
+    position: relative;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-image: url('image/interface.jpeg');
+}
+
+.login-buttons {
+    margin-top: 20px;
+}
+
+.login-buttons a {
+    display: inline-block;
+    margin-left: auto;
+}
+
+.scoreboard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+}
+
+.scoreboard h2 {
+    margin-top: 0;
+}
+
+#scoreButton {
+    background-color: #dc9d3e;
     border: none;
+    color: white;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
-#startButton:hover {
-    background-color: #0056b3;
+#scoreButton:hover {
+    background-color: #874f30;
 }
