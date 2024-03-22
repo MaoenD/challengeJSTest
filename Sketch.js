@@ -18,6 +18,8 @@ function setup() {
 }
 
 function startGame() {
+    let ecran = document.getElementById("ecran");
+    ecran.style.display = 'none';
     let mainMenu = document.getElementById("main-menu");
     mainMenu.style.display = 'none';
     canvas.style.display = 'block';
