@@ -7,17 +7,6 @@
     border-color: red;*/
 }
 
-.container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-}
-
-#main-page {
-
-}
-
 #main-menu {
     transform: translate(-50%, -50%);
     text-align: center;
@@ -26,7 +15,7 @@
     left: 50%;
 }
 
-#startButton{
+#start-button{
     height: 60px;
     width: 120px;
     border-radius: 35px;
@@ -34,19 +23,14 @@
     border: 3px solid #874f30;
 }
 
-#startButton:hover,
-#startButton:active{
-    background-color: #874f30;
-    color: white;
-}
-
-#startButton:active{
+#start-button:hover,
+#start-button:active{
     background-color: #874f30;
     color: white;
 }
 
 h1{
-    color: white;;
+    color: white;
 }
 
 @keyframes flame {
@@ -67,13 +51,10 @@ h1{
     animation: flame 1.5s infinite alternate;
 }
 
-#background{
+#main-page .background{
     position: relative;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-image: url('image/interface.jpeg');
 }
 
 .login-buttons {
