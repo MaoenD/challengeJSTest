@@ -81,16 +81,42 @@ h1{
     margin-top: 0;
 }
 
-#scoreButton {
-    background-color: #dc9d3e;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
+#scores-button:hover {
+    background-color: white;
 }
 
-#scoreButton:hover {
-    background-color: #874f30;
+#scores-button {
+    background-color: black;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    margin-left: 45%;
+    margin-top: 10%;
+    border-radius: 10px;
+    display: block;
+}
+
+#scoreboard {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px auto;
+    width: 300px;
+}
+
+#scoreboard p {
+    margin-bottom: 10px;
+}
+
+#scoreboard span {
+    font-weight: bold;
+}
+
+#close-scores-button {
+    background-color: black;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    margin-top: 40%;
 }
