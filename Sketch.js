@@ -42,17 +42,6 @@ function draw() {
         rect(0, 0, mapWidth, mapHeight);
 
         fill(255);
-        text("Player Position: (" + character.x + ", " + character.y + ")", 10 - -cameraX, 20 - -cameraY);
-        text("Player: " + username, 10 - -cameraX, 40 - -cameraY);
-        text("Ennemies: " + enemies.length, 10 - -cameraX, 60 - -cameraY);
-        text("Allies: " + allies.length, 10 - -cameraX, 80 - -cameraY);
-        text("enemySpawnRate: " + enemySpawnRate, 10 - -cameraX, 100 - -cameraY);
-        text("lastSpawnTime: " + lastSpawnTime, 10 - -cameraX, 120 - -cameraY);
-        text("Level: " + character.level, 10 - -cameraX, 140 - -cameraY);
-        text("HP: " + character.hp, 10 - -cameraX, 160 - -cameraY);
-        text("Attack: " + character.getAttack(), 10 - -cameraX, 180 - -cameraY);
-        text("Speed: " + character.speed, 10 - -cameraX, 200 - -cameraY);
-
         character.show();
 
         let currentTime = millis();
@@ -132,6 +121,16 @@ function draw() {
                 }
             });
         });
+        text("Player Position: (" + character.x + ", " + character.y + ")", 10 - -cameraX, 20 - -cameraY);
+        text("Player: " + username, 10 - -cameraX, 40 - -cameraY);
+        text("Ennemies: " + enemies.length, 10 - -cameraX, 60 - -cameraY);
+        text("Allies: " + allies.length, 10 - -cameraX, 80 - -cameraY);
+        text("enemySpawnRate: " + enemySpawnRate, 10 - -cameraX, 100 - -cameraY);
+        text("lastSpawnTime: " + lastSpawnTime, 10 - -cameraX, 120 - -cameraY);
+        text("Level: " + character.level, 10 - -cameraX, 140 - -cameraY);
+        text("HP: " + character.hp, 10 - -cameraX, 160 - -cameraY);
+        text("Attack: " + character.getAttack(), 10 - -cameraX, 180 - -cameraY);
+        text("Speed: " + character.speed, 10 - -cameraX, 200 - -cameraY);
     } else {
         clear();
     }
