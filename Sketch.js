@@ -57,7 +57,7 @@ function draw() {
 
         let currentTime = millis();
         if (enemies.length < maxEnemies && currentTime - lastSpawnTime > enemySpawnRate) {
-            enemies.push(new Enemy(Math.ceil(random(1, 10)))); // Random tier between 1 and 10
+            enemies.push(new Enemy(Math.ceil(random(0, 10)))); // Random tier between 1 and 10
             lastSpawnTime = currentTime;
         }
 
@@ -71,14 +71,27 @@ function draw() {
         // Handle ally logic
         for (let i = allies.length - 1; i >= 0; i--) {
             let ally = allies[i];
-            let closest = closestEnemy(ally.x, ally.y)
-            if (closest != null) {
-                ally.updatePosTo(closest.x, closest.y);
+            let result = closestEnemy(ally.x, ally.y)
+            if (result != null) {
+                let enemy = result.enemy
+                if (result.distance < 500) {
+                    ally.updatePosTo(enemy.x, enemy.y);
+                } else {
+                    let direction = Math.floor(Math.random() * 4) + 1;
+                    if (direction === 1) {
+                        ally.updatePosTo(ally.x, ally.y + 5);
+                    } else if (direction === 2) {
+                        ally.updatePosTo(ally.x + 5, ally.y);
+                    } else if (direction === 3) {
+                        ally.updatePosTo(ally.x, ally.y - 5);
+                    } else {
+                        ally.updatePosTo(ally.x - 5, ally.y);
+                    }
+                }
             }
             ally.display();
         }
 
-//allies.splice(i, 1); // Remove ally if time over
         // Collision detection summon
         enemies.forEach((enemy, index) => {
             if (dist(character.x, character.y, enemy.x, enemy.y) < 50) { // attack range
@@ -151,5 +164,5 @@ function closestEnemy(targetX, targetY) {
             closestEnemy = enemy;
         }
     }
-    return closestEnemy;
+    return { enemy: closestEnemy, distance: shortestDistance };
 }
