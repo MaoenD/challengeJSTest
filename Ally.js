@@ -1,26 +1,35 @@
-
-
 class Ally {
     constructor(tier) {
         this.x = random(width);
         this.y = random(height);
-        this.lifetime = tier * 10 + 10; // Example lifetime
+        this.hp = tier * 10;
+        this.attack = tier - 1;
         this.tier = tier;
-        this.image = allyImages[tier]; // Select image based on tier
+        this.speed = 11 - tier;
+        this.image = alliesImages[tier]; // Select image based on tier
     }
 
     display() {
-        image(this.image, this.x, this.y, 30, 30); // Adjust dimensions as needed
+        image(this.image, this.x - 25, this.y - 25, 40, 40); // Adjust dimensions as needed
+        text("ALLY", this.x - 23, this.y + 30);
+        text("Tier: " + this.tier, this.x - 23, this.y + 45);
+        text("HP: " + this.hp, this.x - 23, this.y + 60);
+        text("Attack: " + this.attack, this.x - 27.5, this.y + 75);
     }
 
-    update() {
-        this.lifetime--;
-        if (this.lifetime <= 0) {
-            let index = allies.indexOf(this);
-            if (index > -1) {
-                allies.splice(index, 1); // Remove the ally from the game
-            }
-        }
+    updatePosTo(playerX, playerY) {
+        // Calculate direction vector from enemy to player
+        let dx = playerX - this.x;
+        let dy = playerY - this.y;
+
+        // Normalize direction vector
+        let magnitude = sqrt(dx*dx + dy*dy);
+        dx /= magnitude;
+        dy /= magnitude;
+
+        // Move enemy towards player at defined speed
+        this.x += dx * this.speed;
+        this.y += dy * this.speed;
     }
 }
 

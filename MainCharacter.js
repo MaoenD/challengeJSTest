@@ -5,43 +5,9 @@ class Character {
         this.hp = maxHealth;
         this.image = mainCharacterImg;
         this.level = 1;
-        this.speed = 2;
+        this.speed = 5;
     }
 
-    move() {
-        if (keyIsDown(LEFT_ARROW)) {
-            for (const entity of enemies) {
-                entity.x += 5;
-            }
-            for (const entity of allies) {
-                entity.x += 5;
-            }
-        }
-        if (keyIsDown(RIGHT_ARROW)) {
-            for (const entity of enemies) {
-                entity.x -= 5;
-            }
-            for (const entity of allies) {
-                entity.x -= 5;
-            }
-        }
-        if (keyIsDown(UP_ARROW)) {
-            for (const entity of enemies) {
-                entity.y += 5;
-            }
-            for (const entity of allies) {
-                entity.y += 5;
-            }
-        }
-        if (keyIsDown(DOWN_ARROW)) {
-            for (const entity of enemies) {
-                entity.y -= 5;
-            }
-            for (const entity of allies) {
-                entity.y -= 5;
-            }
-        }
-    }
     getAttack() {
         return 2 * this.level;
     }
@@ -58,9 +24,10 @@ class Character {
         this.y = mapHeight / 2;
         character.hp = maxHealth;
         character.level = 1;
+        character.speed = 5;
     }
 
-    update() {
+    updatePos() {
         let newX = this.x;
         let newY = this.y;
 

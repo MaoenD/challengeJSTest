@@ -12,17 +12,13 @@ class Enemy {
 
     display() {
         image(this.image, this.x - 25, this.y - 25, 40, 40); // Adjust dimensions as needed
-        text("Tier: " + this.tier, this.x - 23, this.y + 30);
-        text("HP: " + this.hp, this.x - 23, this.y + 45);
-        text("Attack: " + this.attack, this.x - 27.5, this.y + 60);
-    }
-    attackCharacter(character) {
-        /*if (this.attack > 0 && frameCount % 60 === 0) { // Attack once per second
-            character.hp -= this.attack;
-        }*/
+        text("ENNEMY", this.x - 23, this.y + 30);
+        text("Tier: " + this.tier, this.x - 23, this.y + 45);
+        text("HP: " + this.hp, this.x - 23, this.y + 60);
+        text("Attack: " + this.attack, this.x - 27.5, this.y + 75);
     }
 
-    update(playerX, playerY) {
+    updatePosTo(playerX, playerY) {
         // Calculate direction vector from enemy to player
         let dx = playerX - this.x;
         let dy = playerY - this.y;

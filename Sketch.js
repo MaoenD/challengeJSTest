@@ -31,7 +31,7 @@ function draw() {
 
         background(50);
 
-        character.update();
+        character.updatePos();
 
         cameraX = character.x - width / 2;
         cameraY = character.y - height / 2;
@@ -51,6 +51,7 @@ function draw() {
         text("Level: " + character.level, 10 - -cameraX, 140 - -cameraY);
         text("HP: " + character.hp, 10 - -cameraX, 160 - -cameraY);
         text("Attack: " + character.getAttack(), 10 - -cameraX, 180 - -cameraY);
+        text("Speed: " + character.speed, 10 - -cameraX, 200 - -cameraY);
 
         character.show();
 
@@ -63,37 +64,36 @@ function draw() {
         // Handle enemy logic
         for (let i = enemies.length - 1; i >= 0; i--) {
             let enemy = enemies[i];
-            enemy.update(character.x, character.y);
+            enemy.updatePosTo(character.x, character.y);
             enemy.display();
-            if (enemy.hp <= 0) {
-                enemies.splice(i, 1); // Remove enemy if defeated
-            }
         }
 
         // Handle ally logic
         for (let i = allies.length - 1; i >= 0; i--) {
             let ally = allies[i];
-            ally.update();
-            ally.display();
-            if (ally.lifetime <= 0) {
-                allies.splice(i, 1); // Remove ally if time over
+            let closest = closestEnemy(ally.x, ally.y)
+            if (closest != null) {
+                ally.updatePosTo(closest.x, closest.y);
             }
+            ally.display();
         }
 
+//allies.splice(i, 1); // Remove ally if time over
         // Collision detection summon
         enemies.forEach((enemy, index) => {
-            //text("HP: " + enemy.hp, enemy.x, enemy.y + 20);
             if (dist(character.x, character.y, enemy.x, enemy.y) < 50) { // attack range
                 character.hp -= enemy.attack;
                 enemy.hp -= character.getAttack(); // Character attacks enemy
                 if (enemy.hp <= 0) {
-                    enemies.splice(index, 1); // Remove enemy if defeated
                     character.hp = maxHealth;
                     character.level++;
+                    allies.push(new Ally(enemy.tier));
+                    enemies.splice(index, 1); // Remove enemy if defeated
                 }
                 if (character.hp <= 0) {
                     character.reset();
                     enemies = []
+                    allies = []
                 }
             }
 
@@ -103,12 +103,18 @@ function draw() {
             }*/
         });
 
-        allies.forEach(ally => {
+        allies.forEach((ally, i) => {
             enemies.forEach((enemy, index) => {
                 if (dist(ally.x, ally.y, enemy.x, enemy.y) < 30) { // Ally attack range
-                    enemy.hp -= ally.tier; // Assuming ally's tier is its attack power
+                    ally.hp -= enemy.attack;
+                    enemy.hp -= ally.attack;
                     if (enemy.hp <= 0) {
-                        enemies.splice(index, 1); // Remove enemy if defeated by ally
+                        ally.hp = maxHealth;
+                        allies.push(new Ally(enemy.tier));
+                        enemies.splice(index, 1); // Remove enemy if defeated
+                    }
+                    if (ally.hp <= 0) {
+                        allies.splice(i, 1);
                     }
                 }
             });
@@ -135,3 +141,15 @@ function preload() {
     }
 }
 
+function closestEnemy(targetX, targetY) {
+    let closestEnemy = null;
+    let shortestDistance = Infinity;
+    for (let enemy of enemies) {
+        let distance = dist(targetX, targetY, enemy.x, enemy.y);
+        if (distance < shortestDistance) {
+            shortestDistance = distance;
+            closestEnemy = enemy;
+        }
+    }
+    return closestEnemy;
+}
