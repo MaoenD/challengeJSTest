@@ -11,8 +11,8 @@ let maxHealth = 50;
 let inGame = false;
 let username = "";
 
-let mapWidth = 800;
-let mapHeight = 600;
+let mapWidth = 1600;
+let mapHeight = 1200;
 let cameraX = 0;
 let cameraY = 0;
 
@@ -63,6 +63,7 @@ function draw() {
         // Handle enemy logic
         for (let i = enemies.length - 1; i >= 0; i--) {
             let enemy = enemies[i];
+            enemy.update(character.x, character.y);
             enemy.display();
             if (enemy.hp <= 0) {
                 enemies.splice(i, 1); // Remove enemy if defeated

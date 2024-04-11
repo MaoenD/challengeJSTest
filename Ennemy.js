@@ -3,11 +3,10 @@ class Enemy {
         let pos = randomPositionInsideMap();
         this.x = pos.x;
         this.y = pos.y;
-        /*this.x = random(width - 50);
-        this.y = random(height - 100);*/
         this.hp = tier * 10;
         this.attack = tier - 1;
         this.tier = tier;
+        this.speed = 11 - tier;
         this.image = enemyImages[tier]; // Assign the correct image based on tier
     }
 
@@ -21,6 +20,21 @@ class Enemy {
         /*if (this.attack > 0 && frameCount % 60 === 0) { // Attack once per second
             character.hp -= this.attack;
         }*/
+    }
+
+    update(playerX, playerY) {
+        // Calculate direction vector from enemy to player
+        let dx = playerX - this.x;
+        let dy = playerY - this.y;
+
+        // Normalize direction vector
+        let magnitude = sqrt(dx*dx + dy*dy);
+        dx /= magnitude;
+        dy /= magnitude;
+
+        // Move enemy towards player at defined speed
+        this.x += dx * this.speed;
+        this.y += dy * this.speed;
     }
 
 
