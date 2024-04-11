@@ -54,8 +54,8 @@ class Character {
     }
 
     reset() {
-        this.x = windowWidth / 2;
-        this.y = windowHeight / 2;
+        this.x = mapWidth / 2;
+        this.y = mapHeight / 2;
         character.hp = maxHealth;
         character.level = 1;
     }
