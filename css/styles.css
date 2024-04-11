@@ -15,40 +15,18 @@
     left: 50%;
 }
 
-#start-button{
+#start-game-button{
     height: 60px;
     width: 120px;
     border-radius: 35px;
     background-color: #dc9d3e;
     border: 3px solid #874f30;
+    margin-top: 20px;
 }
 
-#start-button:hover,
-#start-button:active{
-    background-color: #874f30;
-    color: white;
-}
 
 h1{
     color: white;
-}
-
-@keyframes flame {
-    0% {
-        text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35;
-    }
-    50% {
-        text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35, 0 0 90px #ebbb35, 0 0 100px #ebbb35;
-    }
-    100% {
-        text-shadow: 0 0 20px #ebbb35, 0 0 30px #ebbb35, 0 0 40px #ebbb35, 0 0 50px #ebbb35, 0 0 60px #ebbb35, 0 0 70px #ebbb35, 0 0 80px #ebbb35, 0 0 90px #ebbb35, 0 0 100px #ebbb35, 0 0 110px #ebbb35, 0 0 120px #ebbb35;
-    }
-}
-
-.flaming-text {
-    font-size: 60px;
-    color: #1a151c;
-    animation: flame 1.5s infinite alternate;
 }
 
 #main-page .background{
@@ -57,14 +35,6 @@ h1{
     height: 100%;
 }
 
-.login-buttons {
-    margin-top: 20px;
-}
-
-.login-buttons a {
-    display: inline-block;
-    margin-left: auto;
-}
 
 .scoreboard {
     position: absolute;
@@ -91,7 +61,7 @@ h1{
     font-size: 16px;
     padding: 10px;
     border: none;
-    margin-left: 45%;
+    margin-left: 40%;
     margin-top: 10%;
     border-radius: 10px;
     display: block;
@@ -119,4 +89,24 @@ h1{
     padding: 10px;
     border: none;
     margin-top: 40%;
+}
+
+input{
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    width: 40%;
+    height: 20px;
+    border-radius: 20px;
+    border: 2px solid #874f30;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#submit-username-button{
+    background-color: #dc9d3e;
+    border: 3px solid #874f30;
+    border-radius: 35px;
+    margin-top: 20px;
+    padding: 10px;
 }
