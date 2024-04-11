@@ -8,8 +8,8 @@ let mainCharacterImg;
 const enemyImages = [];
 const alliesImages = [];
 let maxHealth = 50;
-
 let inGame = false;
+let username = "";
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -17,17 +17,10 @@ function setup() {
     canvas.style.display = 'none';
 }
 
-function startGame() {
-    let mainPage = document.getElementById("main-page");
-    mainPage.style.display = 'none';
-    canvas.style.display = 'block';
-    character = new Character();
-    inGame = true;
-}
-
 function draw() {
     if (inGame) {
         background(220);
+        text("Player: " + username, 25, 10);
         text("Ennemies: " + enemies.length, 25, 30);
         text("Allies: " + allies.length, 25, 50);
         text("enemySpawnRate: " + enemySpawnRate, 25, 70);
@@ -103,8 +96,10 @@ function draw() {
 }
 
 function drawMainMenu() {
-
+    
 }
+
+
 
 function preload() {
     console.log("Preloading Character")
