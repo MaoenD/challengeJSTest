@@ -1,7 +1,10 @@
 class Enemy {
     constructor(tier) {
-        this.x = random(width - 50);
-        this.y = random(height - 100);
+        let pos = randomPositionInsideMap();
+        this.x = pos.x;
+        this.y = pos.y;
+        /*this.x = random(width - 50);
+        this.y = random(height - 100);*/
         this.hp = tier * 10;
         this.attack = tier - 1;
         this.tier = tier;
@@ -9,10 +12,10 @@ class Enemy {
     }
 
     display() {
-        image(this.image, this.x, this.y, 40, 40); // Adjust dimensions as needed
-        text("Tier: " + this.tier, this.x + 2, this.y + 55);
-        text("HP: " + this.hp, this.x + 2, this.y + 70);
-        text("Attack: " + this.attack, this.x - 2, this.y + 85);
+        image(this.image, this.x - 25, this.y - 25, 40, 40); // Adjust dimensions as needed
+        text("Tier: " + this.tier, this.x - 23, this.y + 30);
+        text("HP: " + this.hp, this.x - 23, this.y + 45);
+        text("Attack: " + this.attack, this.x - 27.5, this.y + 60);
     }
     attackCharacter(character) {
         /*if (this.attack > 0 && frameCount % 60 === 0) { // Attack once per second

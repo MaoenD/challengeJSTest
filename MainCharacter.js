@@ -1,10 +1,11 @@
 class Character {
     constructor() {
-        this.x = width / 2;
-        this.y = height / 2;
+        this.x = mapWidth / 2;
+        this.y = mapHeight / 2;
         this.hp = maxHealth;
         this.image = mainCharacterImg;
         this.level = 1;
+        this.speed = 2;
     }
 
     move() {
@@ -51,14 +52,41 @@ class Character {
             allies.push(ally);
         }
     }
-    display() {
-        image(this.image, this.x, this.y, 50, 50); // Adjust dimensions as needed
-    }
 
     reset() {
         this.x = windowWidth / 2;
         this.y = windowHeight / 2;
         character.hp = maxHealth;
         character.level = 1;
+    }
+
+    update() {
+        let newX = this.x;
+        let newY = this.y;
+
+        if (keyIsDown(LEFT_ARROW)) {
+            newX = this.x - this.speed;
+        }
+        if (keyIsDown(RIGHT_ARROW)) {
+            newX = this.x + this.speed;
+        }
+        if (keyIsDown(UP_ARROW)) {
+            newY = this.y - this.speed;
+        }
+        if (keyIsDown(DOWN_ARROW)) {
+            newY = this.y + this.speed;
+        }
+
+        // Check if the new position is within the map bounds
+        if (newX >= 0 && newX <= mapWidth) {
+            this.x = newX;
+        }
+        if (newY >= 0 && newY <= mapHeight) {
+            this.y = newY;
+        }
+    }
+
+    show() {
+        image(this.image, this.x - 25, this.y - 25, 50, 50);
     }
 }
