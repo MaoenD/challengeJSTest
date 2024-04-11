@@ -17,6 +17,7 @@ function displayScoreboard() {
     scoresButton.style.display = "none";
 }
 
+
 function closeScoreboard() {
     scoreboard.style.display = "none";
     scoresButton.style.display = "block";
