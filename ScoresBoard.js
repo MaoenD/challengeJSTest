@@ -29,6 +29,13 @@ function closeScores() {
     closeScoreboardButton.style.position = "relative";
 }
 
-
 scoresButton.addEventListener("click", displayScoreboard);
 closeScoreboardButton.addEventListener("click", closeScoreboard);
+
+function centerScoresButton() {
+    scoresButton.style.display = "block";
+    scoresButton.style.position = "fixed";
+    scoresButton.style.left = "10%";
+    scoresButton.style.top = "390%";
+    scoresButton.style.transform = "translate(-50%, -50%)";
+}
