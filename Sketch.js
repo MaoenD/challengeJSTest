@@ -28,6 +28,13 @@ function setup() {
 
     backButton = createButton('Exit');
     backButton.position(1800, 15);
+    backButton.style('background-color', 'red');
+    backButton.style('color', 'white');
+    backButton.style('border-radius', '5px');
+    backButton.style('font-size', '16px');
+    backButton.style('padding', '10px');
+    backButton.style('border', 'none');
+
     backButton.mousePressed(returnToMainPage);
 }
 
