@@ -40,3 +40,12 @@ function cancelGame() {
     startDiv.style.display = "none";
     startGameButton.style.display = "block";
 }
+
+function centerStartButton() {
+    startGameButton.style.display = "block";
+    startGameButton.style.position = "fixed";
+    startGameButton.style.top = "200%";
+    startGameButton.style.left = "50%";
+    startGameButton.style.transform = "translate(-50%, -50%)";
+}
+
