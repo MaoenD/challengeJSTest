@@ -14,6 +14,8 @@ let backButton;
 
 let username = "";
 
+let startButtonX, startButtonY;
+
 let mapWidth = 1600;
 let mapHeight = 1200;
 let cameraX = 0;
@@ -166,9 +168,9 @@ function closestEnemy(targetX, targetY) {
 
 function returnToMainPage() {
     inGame = false;
-
     canvas.style.display = "none";
-
+    
     document.getElementById("main-page").style.display = "block";
-    document.getElementById("start-game-button").style.display = "block";
+    centerStartButton();
+    centerScoresButton();
 }
