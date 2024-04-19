@@ -9,7 +9,12 @@ const enemyImages = [];
 const alliesImages = [];
 let maxHealth = 50;
 let inGame = false;
+
+let backButton;
+
 let username = "";
+
+let startButtonX, startButtonY;
 
 let mapWidth = 1600;
 let mapHeight = 1200;
@@ -20,6 +25,17 @@ function setup() {
     createCanvas(windowWidth - 15, windowHeight - 15);
     canvas = document.querySelector('canvas');
     canvas.style.display = 'none';
+
+    backButton = createButton('Exit');
+    backButton.position(1800, 15);
+    backButton.style('background-color', 'red');
+    backButton.style('color', 'white');
+    backButton.style('border-radius', '5px');
+    backButton.style('font-size', '16px');
+    backButton.style('padding', '10px');
+    backButton.style('border', 'none');
+
+    backButton.mousePressed(returnToMainPage);
 }
 
 function windowResized() {
@@ -131,8 +147,10 @@ function draw() {
         text("HP: " + character.hp, 10 - -cameraX, 160 - -cameraY);
         text("Attack: " + character.getAttack(), 10 - -cameraX, 180 - -cameraY);
         text("Speed: " + character.speed, 10 - -cameraX, 200 - -cameraY);
+        backButton.show();
     } else {
         clear();
+        backButton.hide();
     }
 }
 
@@ -164,4 +182,14 @@ function closestEnemy(targetX, targetY) {
         }
     }
     return { enemy: closestEnemy, distance: shortestDistance };
+}
+
+
+function returnToMainPage() {
+    inGame = false;
+    canvas.style.display = "none";
+    
+    document.getElementById("main-page").style.display = "block";
+    centerStartButton();
+    centerScoresButton();
 }
