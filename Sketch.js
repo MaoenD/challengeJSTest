@@ -27,7 +27,7 @@ function setup() {
     canvas.style.display = 'none';
 
     backButton = createButton('Exit');
-    backButton.position(1800, 15);
+    backButton.position(windowWidth - 75, 20);
     backButton.style('background-color', 'red');
     backButton.style('color', 'white');
     backButton.style('border-radius', '5px');
@@ -39,6 +39,7 @@ function setup() {
 }
 
 function windowResized() {
+    backButton.position(windowWidth - 75, 20);
     resizeCanvas(windowWidth - 15, windowHeight - 15);
 }
 
@@ -105,7 +106,7 @@ function draw() {
                 if (enemy.hp <= 0) {
                     character.hp = maxHealth;
                     character.level++;
-                    allies.push(new Ally(enemy.tier));
+                    allies.push(new Ally(enemy.tier, enemy.x, enemy.y));
                     enemies.splice(index, 1); // Remove enemy if defeated
                 }
                 if (character.hp <= 0) {

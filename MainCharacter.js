@@ -6,6 +6,7 @@ class Character {
         this.image = mainCharacterImg;
         this.level = 1;
         this.speed = 5;
+        this.lastDashTime = 0;
     }
 
     getAttack() {
@@ -30,18 +31,28 @@ class Character {
     updatePos() {
         let newX = this.x;
         let newY = this.y;
+        let finalSpeed = this.speed
+
+        let currentTime = millis() / 1000;
+        let timeSinceLastDash = currentTime - this.lastDashTime;
+        let canDash = timeSinceLastDash >= 4;
+
+        if (canDash && keyIsDown(SHIFT)) {
+            finalSpeed = this.speed + 150
+            this.lastDashTime = currentTime;
+        }
 
         if (keyIsDown(LEFT_ARROW)) {
-            newX = this.x - this.speed;
+            newX = this.x - finalSpeed;
         }
         if (keyIsDown(RIGHT_ARROW)) {
-            newX = this.x + this.speed;
+            newX = this.x + finalSpeed;
         }
         if (keyIsDown(UP_ARROW)) {
-            newY = this.y - this.speed;
+            newY = this.y - finalSpeed;
         }
         if (keyIsDown(DOWN_ARROW)) {
-            newY = this.y + this.speed;
+            newY = this.y + finalSpeed;
         }
 
         // Check if the new position is within the map bounds

@@ -1,7 +1,7 @@
 class Ally {
-    constructor(tier) {
-        this.x = random(width);
-        this.y = random(height);
+    constructor(tier, x, y) {
+        this.x = x;
+        this.y = y;
         this.hp = tier * 10;
         this.attack = tier - 1;
         this.tier = tier;
