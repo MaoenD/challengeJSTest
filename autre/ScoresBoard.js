@@ -18,19 +18,17 @@ function displayScoreboard() {
 }
 
 
-function closeScoreboard() {
-    scoreboard.style.display = "none";
-    scoresButton.style.display = "block";
+function toggleScoreboard(displayStatus) {
+    scoreboard.style.display = displayStatus ? "block" : "none";
+    scoresButton.style.display = displayStatus ? "none" : "block";
+    if (!displayStatus) {
+        closeScoreboardButton.style.position = "relative";
+    }
 }
 
-function closeScores() {
-    scoreboard.style.display = "none";
-    scoresButton.style.display = "block";
-    closeScoreboardButton.style.position = "relative";
-}
+scoresButton.addEventListener("click", () => toggleScoreboard(true));
+closeScoreboardButton.addEventListener("click", () => toggleScoreboard(false));
 
-scoresButton.addEventListener("click", displayScoreboard);
-closeScoreboardButton.addEventListener("click", closeScoreboard);
 
 function centerScoresButton() {
     scoresButton.style.display = "block";

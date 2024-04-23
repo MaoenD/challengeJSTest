@@ -11,11 +11,11 @@ class Enemy {
     }
 
     display() {
-        image(this.image, this.x - 25, this.y - 25, 40, 40); // Adjust dimensions as needed
+        //image(this.image, this.x - 25, this.y - 25, 40, 40);
+        fill(255, 0, 0);
+        rect(this.x - 25, this.y - 25, 40, 40);
         text("ENNEMY", this.x - 29, this.y + 30);
-        text("Tier: " + this.tier, this.x - 23, this.y + 45);
         text("HP: " + this.hp, this.x - 23, this.y + 60);
-        text("Attack: " + this.attack, this.x - 27.5, this.y + 75);
     }
 
     updatePosTo(playerX, playerY) {

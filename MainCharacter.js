@@ -15,7 +15,7 @@ class Character {
 
     summon(){
         if(keyIsDown(O)) {
-            let ally = new Ally(1); // Assuming tier 1 for the ally
+            let ally = new Ally(1);
             allies.push(ally);
         }
     }
@@ -55,7 +55,6 @@ class Character {
             newY = this.y + finalSpeed;
         }
 
-        // Check if the new position is within the map bounds
         if (newX >= 0 && newX <= mapWidth) {
             this.x = newX;
         }
@@ -65,6 +64,8 @@ class Character {
     }
 
     show() {
-        image(this.image, this.x - 25, this.y - 25, 50, 50);
+        //image(this.image, this.x - 25, this.y - 25, 50, 50);
+        fill(0, 0, 255);
+        rect(this.x - 25, this.y - 25, 50, 50);
     }
 }
