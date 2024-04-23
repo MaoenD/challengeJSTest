@@ -6,13 +6,13 @@ class Ally {
         this.attack = tier - 1;
         this.tier = tier;
         this.speed = 11 - tier;
-        this.image = alliesImages[tier]; // Select image based on tier
+        this.image = alliesImages[tier];
     }
 
     display() {
         //image(this.image, this.x - 25, this.y - 25, 40, 40);
         fill(0, 255, 0);
-        rect(this.x - 25, this.y - 25, 40, 40);
+        rect(this.x - 20, this.y - 20, 40, 40);
         text("ALLY", this.x - 20, this.y + 30);
         text("HP: " + this.hp, this.x - 23, this.y + 60);
     }
@@ -32,7 +32,6 @@ class Ally {
             return;
         }
 
-        // Move ally towards player at defined speed
         this.x = nextX;
         this.y = nextY;
     }

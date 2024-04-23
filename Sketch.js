@@ -14,7 +14,7 @@ let backButton;
 let username = "";
 let startButtonX, startButtonY;
 let mapWidth = 1600;
-let mapHeight = 1200;
+let mapHeight = 1400;
 let cameraX = 0;
 let cameraY = 0;
 
@@ -39,8 +39,11 @@ function setupGame() {
     document.getElementById("main-page").style.display = 'none';
     canvas.style.display = 'block';
     inGame = true;
-    loop();
+    isGameOver = false;
+    enemies = [];  
+    allies = [];  
     character = new Character();
+    loop();
 }
 
 function windowResized() {
@@ -135,9 +138,45 @@ function checkCollisions() {
 
 function checkEnemyCollisions() {
     enemies.forEach((enemy, index) => {
-        if (dist(character.x, character.y, enemy.x, enemy.y) < 50) {
+        let charLeft = character.x - 25;
+        let charRight = character.x + 25;
+        let charTop = character.y - 25;
+        let charBottom = character.y + 25;
+
+        let enemyLeft = enemy.x - 20;
+        let enemyRight = enemy.x + 20;
+        let enemyTop = enemy.y - 20;
+        let enemyBottom = enemy.y + 20;
+
+        if (charRight > enemyLeft &&
+            charLeft < enemyRight &&
+            charBottom > enemyTop &&
+            charTop < enemyBottom) {
             processCollisionWithEnemy(enemy, index);
         }
+    });
+}
+
+function checkAllyCollisions() {
+    allies.forEach((ally, allyIndex) => {
+        let allyLeft = ally.x - 20;
+        let allyRight = ally.x + 20;
+        let allyTop = ally.y - 20;
+        let allyBottom = ally.y + 20;
+
+        enemies.forEach((enemy, enemyIndex) => {
+            let enemyLeft = enemy.x - 20;
+            let enemyRight = enemy.x + 20;
+            let enemyTop = enemy.y - 20;
+            let enemyBottom = enemy.y + 20;
+
+            if (allyRight > enemyLeft &&
+                allyLeft < enemyRight &&
+                allyBottom > enemyTop &&
+                allyTop < enemyBottom) {
+                processCollisionWithAlly(ally, enemy, allyIndex, enemyIndex);
+            }
+        });
     });
 }
 
@@ -153,16 +192,6 @@ function processCollisionWithEnemy(enemy, index) {
     if (character.hp <= 0) {
         resetGame();
     }
-}
-
-function checkAllyCollisions() {
-    allies.forEach((ally, i) => {
-        enemies.forEach((enemy, index) => {
-            if (dist(ally.x, ally.y, enemy.x, enemy.y) < 30) {
-                processCollisionWithAlly(ally, enemy, i, index);
-            }
-        });
-    });
 }
 
 function processCollisionWithAlly(ally, enemy, allyIndex, enemyIndex) {

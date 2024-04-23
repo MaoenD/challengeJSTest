@@ -26,6 +26,7 @@ class Character {
         character.hp = maxHealth;
         character.level = 1;
         character.speed = 5;
+        this.lastDashTime = 0;
     }
 
     updatePos() {
