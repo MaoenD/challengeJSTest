@@ -35,6 +35,14 @@ function setup() {
     backButton.mousePressed(returnToMainPage);
 }
 
+function setupGame() {
+    document.getElementById("main-page").style.display = 'none';
+    canvas.style.display = 'block';
+    inGame = true;
+    loop();
+    character = new Character();
+}
+
 function windowResized() {
     backButton.position(windowWidth - 75, 20);
     resizeCanvas(windowWidth - 15, windowHeight - 15);

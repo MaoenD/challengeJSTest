@@ -55,7 +55,6 @@ class Character {
             newY = this.y + finalSpeed;
         }
 
-        // Check if the new position is within the map bounds
         if (newX >= 0 && newX <= mapWidth) {
             this.x = newX;
         }
